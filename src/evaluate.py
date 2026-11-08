@@ -92,6 +92,9 @@ def load_methods() -> dict[str, dict]:
 
 
 # ---------------------------------------------------------------- comparing
+BASELINE = "baseline: always not stated"
+
+
 def ebl_text(rec: dict) -> str:
     if rec["ebl_minimal"]:
         return "minimal"
@@ -112,6 +115,8 @@ def same(gold: dict, pred: dict, field: str) -> bool:
     if field == "ebl":
         if gold["ebl_minimal"] != pred["ebl_minimal"]:
             return False
+        if gold["ebl_minimal"]:  # both say minimal; a number next to it doesn't change that
+            return True
         if gold["ebl_ml"] is None or pred["ebl_ml"] is None:
             return gold["ebl_ml"] is None and pred["ebl_ml"] is None
         return abs(gold["ebl_ml"] - pred["ebl_ml"]) <= 0.5
@@ -202,7 +207,7 @@ def write_report(gold, metrics, errors, methods) -> None:
     for n in names:
         m = micro[micro["method"] == n].set_index("metric")["value"]
         lines.append(f"| {n} | {pct(m['micro_precision'])} | {pct(m['micro_recall'])} "
-                     f"| {m['micro_f1']:.2f} |")
+                     f"| {'n/a' if pd.isna(m['micro_f1']) else format(m['micro_f1'], '.2f')} |")
 
     by_group = metrics[(metrics["metric"] == "accuracy") & (metrics["group"] != "all")
                        & (metrics["field"] == "anesthesia_types")]
@@ -233,6 +238,9 @@ def write_report(gold, metrics, errors, methods) -> None:
               "agreement.",
               f"- {len(gold)} notes is a small sample; the confidence intervals show how uncertain "
               "each number is.",
+              *(["- Prompt versions after v1 were written after reading v1's errors on these same "
+                 "notes. There is no held-out set, so their scores are likely somewhat optimistic."]
+                if any(not n.endswith("__v1") for n in names if n.startswith("llm: ")) else []),
               "- MTSamples notes are transcription examples, not records from a real hospital.", ""]
     (REPORTS / "evaluation.md").write_text("\n".join(lines))
 
@@ -240,7 +248,10 @@ def write_report(gold, metrics, errors, methods) -> None:
 def main() -> None:
     gold = load_gold()
     methods = load_methods()
+    # reference point: answer "nothing found / not stated" for every note
+    methods[BASELINE] = {nid: empty_record() for nid in gold["note_id"]}
     metrics, errors = evaluate(gold, methods)
+    errors = errors[errors["method"] != BASELINE]
     REPORTS.mkdir(exist_ok=True)
     metrics.round(4).to_csv(REPORTS / "metrics.csv", index=False)
     errors.to_csv(REPORTS / "errors.csv", index=False)

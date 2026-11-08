@@ -1,0 +1,3 @@
+run_id,model,prompt_version,notes,valid_json_rate,schema_ok_rate,mean_seconds,p95_seconds,finished_at
+qwen2.5-3b__v1,qwen2.5:3b,v1,100,1.0,1.0,4.88,8.23,2026-11-08 21:34 UTC
+qwen2.5-3b__v2,qwen2.5:3b,v2,100,1.0,1.0,4.87,7.69,2026-11-08 21:49 UTC

@@ -1,0 +1,338 @@
+method,field,note_id,group,gold,predicted,gold_unsure
+rules,anesthesia_types,d76259b459,heading,"mac_sedation, local",local,False
+rules,anesthesia_types,e36a6a3811,narrative_only,general,(none),False
+rules,anesthesia_types,d7b03ebc18,heading,"mac_sedation, regional_block","general, local",True
+rules,anesthesia_types,f3b547971c,detector_only,general,(none),False
+rules,anesthesia_types,e4f746cf00,heading,"general, local",general,False
+rules,anesthesia_types,20c8356df7,heading,"spinal, local, mac_sedation","spinal, local",False
+rules,anesthesia_types,c7e72733fa,narrative_only,general,(none),False
+rules,anesthesia_types,2c1a4b8e0f,heading,"general, local",general,False
+rules,anesthesia_types,e9fbc30533,narrative_only,"mac_sedation, local",(none),False
+rules,anesthesia_types,4af747a9dd,heading,"general, local, topical",general,False
+rules,anesthesia_types,33e7d21f85,narrative_only,general,(none),False
+rules,anesthesia_types,4829295a7e,detector_only,general,(none),False
+rules,anesthesia_types,34ffdadb66,heading,"topical, local",topical,False
+rules,anesthesia_types,019f087af8,narrative_only,general,(none),False
+rules,anesthesia_types,8235318f0d,heading,"general, local",general,False
+rules,anesthesia_types,ec9d06f431,heading,"general, epidural",general,False
+rules,anesthesia_types,b87cfeccc4,heading,"general, local",general,False
+rules,anesthesia_types,8aab654fe3,narrative_only,general,(none),False
+rules,anesthesia_types,1cb492b93e,heading,"general, local",general,True
+rules,anesthesia_types,6717d462ae,heading,"mac_sedation, local","general, local",True
+rules,anesthesia_types,6f631400be,heading,"regional_block, local",regional_block,False
+rules,anesthesia_types,a9112a72da,detector_only,local,(none),False
+rules,anesthesia_types,547b051a10,narrative_only,"mac_sedation, regional_block",(none),False
+rules,anesthesia_types,948a29bc6f,narrative_only,"general, local",(none),False
+rules,anesthesia_types,a6419c88db,detector_only,general,(none),False
+rules,anesthesia_types,bc3fd808c1,narrative_only,general,(none),False
+rules,anesthesia_types,3d6babd9b7,heading,"general, local",general,False
+rules,anesthesia_types,06acb8b600,narrative_only,general,(none),False
+rules,anesthesia_types,797b702f51,narrative_only,"general, local",(none),False
+rules,anesthesia_types,bb7bdb5cce,narrative_only,general,(none),False
+rules,anesthesia_types,b70eddbcc6,narrative_only,"general, local, regional_block",general,False
+rules,anesthesia_types,b34d7af809,narrative_only,general,(none),False
+rules,anesthesia_types,777ce734eb,heading,"topical, mac_sedation, local","mac_sedation, topical",False
+rules,anesthesia_types,85a656850f,narrative_only,"epidural, general",(none),False
+rules,anesthesia_types,425789d72e,narrative_only,"general, local",general,False
+rules,anesthesia_types,05223d8563,detector_only,"mac_sedation, local",(none),False
+rules,anesthesia_types,02fe994b4f,detector_only,general,(none),False
+rules,anesthesia_types,c7c663bb02,no_mention,local,(none),False
+rules,anesthesia_types,b69e87186b,detector_only,local,(none),False
+rules,anesthesia_types,ce6822f85f,detector_only,"general, regional_block, local",(none),False
+rules,anesthesia_types,ae91a7167d,heading,"mac_sedation, topical, local",mac_sedation,False
+rules,anesthesia_types,4f01c7fdc0,narrative_only,"mac_sedation, local, general",general,False
+rules,anesthesia_types,738cd33fa5,narrative_only,general,(none),False
+rules,anesthesia_types,412a1983f7,no_mention,"mac_sedation, topical",(none),False
+rules,anesthesia_types,b161dca783,heading,"general, local",general,False
+rules,airway,f06034f3e3,heading,endotracheal_tube,not_stated,False
+rules,airway,c637e2a9f2,heading,endotracheal_tube,not_stated,False
+rules,airway,641a072feb,heading,endotracheal_tube,not_stated,False
+rules,airway,349843fb8a,heading,endotracheal_tube,not_stated,False
+rules,airway,9e719e6930,heading,mask,not_stated,False
+rules,airway,4ceaed933c,heading,endotracheal_tube,not_stated,False
+rules,airway,bac1e0b0f9,heading,not_stated,endotracheal_tube,True
+rules,ebl,f06034f3e3,heading,150 mL,not stated,False
+rules,ebl,4af747a9dd,heading,50 mL,not stated,False
+rules,ebl,ec9d06f431,heading,600 mL,not stated,False
+rules,ebl,1cb492b93e,heading,4 mL,not stated,True
+rules,ebl,4d39892d1a,narrative_only,600 mL,not stated,False
+rules,ebl,a7296ad422,narrative_only,0 mL,not stated,True
+rules,ebl,fd35ddc951,heading,minimal,not stated,True
+rules,ebl,c7c663bb02,no_mention,500 mL,not stated,False
+rules,ebl,ce6822f85f,detector_only,20 mL,not stated,False
+rules,complications,d76259b459,heading,none,not_stated,False
+rules,complications,20c8356df7,heading,not_stated,none,False
+rules,complications,68016c6909,heading,any,not_stated,True
+rules,complications,7ee2457a78,narrative_only,any,not_stated,False
+rules,complications,a0c9880b75,narrative_only,any,not_stated,False
+rules,complications,777ce734eb,heading,none,not_stated,False
+rules,complications,ce6822f85f,detector_only,none,not_stated,False
+rules,complications,a89f3f62be,heading,any,none,False
+llm: qwen2.5-3b__v1,anesthesia_types,d76259b459,heading,"mac_sedation, local",local,False
+llm: qwen2.5-3b__v1,anesthesia_types,0d2202e796,heading,general,"general, mac_sedation",False
+llm: qwen2.5-3b__v1,anesthesia_types,d7b03ebc18,heading,"mac_sedation, regional_block","general, local",True
+llm: qwen2.5-3b__v1,anesthesia_types,678a0046f3,heading,general,"general, mac_sedation",False
+llm: qwen2.5-3b__v1,anesthesia_types,e4f746cf00,heading,"general, local",general,False
+llm: qwen2.5-3b__v1,anesthesia_types,20c8356df7,heading,"spinal, local, mac_sedation","spinal, local",False
+llm: qwen2.5-3b__v1,anesthesia_types,2c1a4b8e0f,heading,"general, local",general,False
+llm: qwen2.5-3b__v1,anesthesia_types,30b62b25d4,narrative_only,general,(none),False
+llm: qwen2.5-3b__v1,anesthesia_types,e9fbc30533,narrative_only,"mac_sedation, local",mac_sedation,False
+llm: qwen2.5-3b__v1,anesthesia_types,4af747a9dd,heading,"general, local, topical",general,False
+llm: qwen2.5-3b__v1,anesthesia_types,4c6b5c3213,heading,regional_block,local,False
+llm: qwen2.5-3b__v1,anesthesia_types,34ffdadb66,heading,"topical, local",topical,False
+llm: qwen2.5-3b__v1,anesthesia_types,8235318f0d,heading,"general, local",general,False
+llm: qwen2.5-3b__v1,anesthesia_types,4b58ee4e0a,detector_only,(none),mac_sedation,False
+llm: qwen2.5-3b__v1,anesthesia_types,b87cfeccc4,heading,"general, local",general,False
+llm: qwen2.5-3b__v1,anesthesia_types,1cb492b93e,heading,"general, local",general,True
+llm: qwen2.5-3b__v1,anesthesia_types,a9112a72da,detector_only,local,(none),False
+llm: qwen2.5-3b__v1,anesthesia_types,349843fb8a,heading,"general, spinal","general, spinal, local",False
+llm: qwen2.5-3b__v1,anesthesia_types,547b051a10,narrative_only,"mac_sedation, regional_block",mac_sedation,False
+llm: qwen2.5-3b__v1,anesthesia_types,d15c714c4f,heading,general,"mac_sedation, local",False
+llm: qwen2.5-3b__v1,anesthesia_types,948a29bc6f,narrative_only,"general, local",general,False
+llm: qwen2.5-3b__v1,anesthesia_types,3d6babd9b7,heading,"general, local",general,False
+llm: qwen2.5-3b__v1,anesthesia_types,4ceaed933c,heading,"general, regional_block","general, spinal",False
+llm: qwen2.5-3b__v1,anesthesia_types,797b702f51,narrative_only,"general, local",general,False
+llm: qwen2.5-3b__v1,anesthesia_types,b70eddbcc6,narrative_only,"general, local, regional_block",general,False
+llm: qwen2.5-3b__v1,anesthesia_types,777ce734eb,heading,"topical, mac_sedation, local","mac_sedation, topical",False
+llm: qwen2.5-3b__v1,anesthesia_types,85a656850f,narrative_only,"epidural, general","general, spinal",False
+llm: qwen2.5-3b__v1,anesthesia_types,425789d72e,narrative_only,"general, local",general,False
+llm: qwen2.5-3b__v1,anesthesia_types,05223d8563,detector_only,"mac_sedation, local",local,False
+llm: qwen2.5-3b__v1,anesthesia_types,bac1e0b0f9,heading,general,"general, mac_sedation",True
+llm: qwen2.5-3b__v1,anesthesia_types,fd35ddc951,heading,general,"general, mac_sedation",True
+llm: qwen2.5-3b__v1,anesthesia_types,bea3c1eebb,heading,"local, mac_sedation",mac_sedation,False
+llm: qwen2.5-3b__v1,anesthesia_types,856f169e61,heading,"local, mac_sedation",local,False
+llm: qwen2.5-3b__v1,anesthesia_types,c7c663bb02,no_mention,local,(none),False
+llm: qwen2.5-3b__v1,anesthesia_types,ce6822f85f,detector_only,"general, regional_block, local","general, local",False
+llm: qwen2.5-3b__v1,anesthesia_types,ae91a7167d,heading,"mac_sedation, topical, local",mac_sedation,False
+llm: qwen2.5-3b__v1,anesthesia_types,4f01c7fdc0,narrative_only,"mac_sedation, local, general",general,False
+llm: qwen2.5-3b__v1,anesthesia_types,412a1983f7,no_mention,"mac_sedation, topical",mac_sedation,False
+llm: qwen2.5-3b__v1,anesthesia_types,b161dca783,heading,"general, local","general, mac_sedation",False
+llm: qwen2.5-3b__v1,airway,629e48fda4,detector_only,not_stated,mask,False
+llm: qwen2.5-3b__v1,airway,d76259b459,heading,not_stated,mask,False
+llm: qwen2.5-3b__v1,airway,d7b03ebc18,heading,not_stated,mask,True
+llm: qwen2.5-3b__v1,airway,f3b547971c,detector_only,not_stated,endotracheal_tube,False
+llm: qwen2.5-3b__v1,airway,c7e72733fa,narrative_only,not_stated,mask,False
+llm: qwen2.5-3b__v1,airway,f06034f3e3,heading,endotracheal_tube,not_stated,False
+llm: qwen2.5-3b__v1,airway,30b62b25d4,narrative_only,not_stated,mask,False
+llm: qwen2.5-3b__v1,airway,e9fbc30533,narrative_only,not_stated,mask,False
+llm: qwen2.5-3b__v1,airway,33e7d21f85,narrative_only,not_stated,mask,False
+llm: qwen2.5-3b__v1,airway,7ee2457a78,narrative_only,not_stated,mask,False
+llm: qwen2.5-3b__v1,airway,91e91f7ac5,heading,not_stated,endotracheal_tube,False
+llm: qwen2.5-3b__v1,airway,34ffdadb66,heading,not_stated,mask,False
+llm: qwen2.5-3b__v1,airway,4b58ee4e0a,detector_only,not_stated,mask,False
+llm: qwen2.5-3b__v1,airway,c797b75b7b,heading,not_stated,endotracheal_tube,False
+llm: qwen2.5-3b__v1,airway,b87cfeccc4,heading,not_stated,endotracheal_tube,False
+llm: qwen2.5-3b__v1,airway,a0c9880b75,narrative_only,not_stated,endotracheal_tube,False
+llm: qwen2.5-3b__v1,airway,a229a04f9a,heading,not_stated,mask,False
+llm: qwen2.5-3b__v1,airway,f7e9c52e7f,heading,not_stated,mask,False
+llm: qwen2.5-3b__v1,airway,6717d462ae,heading,not_stated,mask,True
+llm: qwen2.5-3b__v1,airway,6f631400be,heading,not_stated,mask,False
+llm: qwen2.5-3b__v1,airway,4c7a66da59,heading,not_stated,mask,False
+llm: qwen2.5-3b__v1,airway,c343ffabbb,heading,not_stated,endotracheal_tube,False
+llm: qwen2.5-3b__v1,airway,c637e2a9f2,heading,endotracheal_tube,mask,False
+llm: qwen2.5-3b__v1,airway,97ef1c4d9f,narrative_only,not_stated,mask,False
+llm: qwen2.5-3b__v1,airway,670472a626,heading,not_stated,endotracheal_tube,False
+llm: qwen2.5-3b__v1,airway,4ec61ab81d,heading,not_stated,mask,False
+llm: qwen2.5-3b__v1,airway,547b051a10,narrative_only,not_stated,mask,False
+llm: qwen2.5-3b__v1,airway,a6419c88db,detector_only,not_stated,mask,False
+llm: qwen2.5-3b__v1,airway,bc3fd808c1,narrative_only,not_stated,endotracheal_tube,False
+llm: qwen2.5-3b__v1,airway,3d6babd9b7,heading,not_stated,mask,False
+llm: qwen2.5-3b__v1,airway,4d39892d1a,narrative_only,not_stated,endotracheal_tube,False
+llm: qwen2.5-3b__v1,airway,a7296ad422,narrative_only,not_stated,endotracheal_tube,True
+llm: qwen2.5-3b__v1,airway,777ce734eb,heading,not_stated,mask,False
+llm: qwen2.5-3b__v1,airway,425789d72e,narrative_only,not_stated,mask,False
+llm: qwen2.5-3b__v1,airway,05223d8563,detector_only,not_stated,mask,False
+llm: qwen2.5-3b__v1,airway,35327e8ca3,heading,not_stated,mask,False
+llm: qwen2.5-3b__v1,airway,bac1e0b0f9,heading,not_stated,mask,True
+llm: qwen2.5-3b__v1,airway,cdf7514d4c,heading,not_stated,endotracheal_tube,False
+llm: qwen2.5-3b__v1,airway,bea3c1eebb,heading,not_stated,mask,False
+llm: qwen2.5-3b__v1,airway,856f169e61,heading,not_stated,mask,False
+llm: qwen2.5-3b__v1,airway,b8f6f7417f,narrative_only,not_stated,endotracheal_tube,False
+llm: qwen2.5-3b__v1,airway,b69e87186b,detector_only,not_stated,mask,False
+llm: qwen2.5-3b__v1,airway,ae91a7167d,heading,not_stated,mask,False
+llm: qwen2.5-3b__v1,airway,412a1983f7,no_mention,not_stated,mask,False
+llm: qwen2.5-3b__v1,ebl,629e48fda4,detector_only,not stated,0 mL,False
+llm: qwen2.5-3b__v1,ebl,d76259b459,heading,not stated,0 mL,False
+llm: qwen2.5-3b__v1,ebl,e36a6a3811,narrative_only,not stated,0 mL,False
+llm: qwen2.5-3b__v1,ebl,0d2202e796,heading,not stated,0 mL,False
+llm: qwen2.5-3b__v1,ebl,d7b03ebc18,heading,not stated,12 mL,True
+llm: qwen2.5-3b__v1,ebl,678a0046f3,heading,minimal,0 mL,False
+llm: qwen2.5-3b__v1,ebl,b38ecfc56c,heading,not stated,0 mL,False
+llm: qwen2.5-3b__v1,ebl,f3b547971c,detector_only,not stated,0 mL,False
+llm: qwen2.5-3b__v1,ebl,e4f746cf00,heading,not stated,0 mL,False
+llm: qwen2.5-3b__v1,ebl,97e4f78ca4,heading,not stated,30 mL,False
+llm: qwen2.5-3b__v1,ebl,20c8356df7,heading,not stated,0 mL,False
+llm: qwen2.5-3b__v1,ebl,c7e72733fa,narrative_only,not stated,0 mL,False
+llm: qwen2.5-3b__v1,ebl,2c1a4b8e0f,heading,not stated,0 mL,False
+llm: qwen2.5-3b__v1,ebl,30b62b25d4,narrative_only,not stated,0 mL,False
+llm: qwen2.5-3b__v1,ebl,e9fbc30533,narrative_only,not stated,0 mL,False
+llm: qwen2.5-3b__v1,ebl,33e7d21f85,narrative_only,not stated,0 mL,False
+llm: qwen2.5-3b__v1,ebl,4829295a7e,detector_only,not stated,0 mL,False
+llm: qwen2.5-3b__v1,ebl,68016c6909,heading,not stated,0 mL,True
+llm: qwen2.5-3b__v1,ebl,f8137f024b,heading,minimal,50 mL,False
+llm: qwen2.5-3b__v1,ebl,7ee2457a78,narrative_only,not stated,0 mL,False
+llm: qwen2.5-3b__v1,ebl,91e91f7ac5,heading,not stated,0 mL,False
+llm: qwen2.5-3b__v1,ebl,4c6b5c3213,heading,not stated,0 mL,False
+llm: qwen2.5-3b__v1,ebl,019f087af8,narrative_only,not stated,0 mL,False
+llm: qwen2.5-3b__v1,ebl,8235318f0d,heading,not stated,0 mL,False
+llm: qwen2.5-3b__v1,ebl,4b58ee4e0a,detector_only,not stated,minimal,False
+llm: qwen2.5-3b__v1,ebl,b87cfeccc4,heading,not stated,minimal,False
+llm: qwen2.5-3b__v1,ebl,8aab654fe3,narrative_only,not stated,0 mL,False
+llm: qwen2.5-3b__v1,ebl,a0c9880b75,narrative_only,not stated,0 mL,False
+llm: qwen2.5-3b__v1,ebl,1cb492b93e,heading,4 mL,2 mL,True
+llm: qwen2.5-3b__v1,ebl,6717d462ae,heading,not stated,10 mL,True
+llm: qwen2.5-3b__v1,ebl,c637e2a9f2,heading,not stated,0 mL,False
+llm: qwen2.5-3b__v1,ebl,97ef1c4d9f,narrative_only,not stated,0 mL,False
+llm: qwen2.5-3b__v1,ebl,641a072feb,heading,not stated,1000 mL,False
+llm: qwen2.5-3b__v1,ebl,670472a626,heading,not stated,0 mL,False
+llm: qwen2.5-3b__v1,ebl,3430121928,heading,not stated,0 mL,False
+llm: qwen2.5-3b__v1,ebl,4ec61ab81d,heading,not stated,1.2 mL,False
+llm: qwen2.5-3b__v1,ebl,547b051a10,narrative_only,not stated,0 mL,False
+llm: qwen2.5-3b__v1,ebl,d15c714c4f,heading,not stated,0 mL,False
+llm: qwen2.5-3b__v1,ebl,948a29bc6f,narrative_only,not stated,0 mL,False
+llm: qwen2.5-3b__v1,ebl,a6419c88db,detector_only,not stated,0 mL,False
+llm: qwen2.5-3b__v1,ebl,3d6babd9b7,heading,not stated,0 mL,False
+llm: qwen2.5-3b__v1,ebl,06acb8b600,narrative_only,not stated,0 mL,False
+llm: qwen2.5-3b__v1,ebl,797b702f51,narrative_only,not stated,0 mL,False
+llm: qwen2.5-3b__v1,ebl,bb7bdb5cce,narrative_only,not stated,0 mL,False
+llm: qwen2.5-3b__v1,ebl,509ed9f1c9,no_mention,not stated,0 mL,True
+llm: qwen2.5-3b__v1,ebl,b34d7af809,narrative_only,not stated,0 mL,False
+llm: qwen2.5-3b__v1,ebl,425789d72e,narrative_only,not stated,0 mL,False
+llm: qwen2.5-3b__v1,ebl,05223d8563,detector_only,not stated,0 mL,False
+llm: qwen2.5-3b__v1,ebl,35327e8ca3,heading,minimal,20 mL,False
+llm: qwen2.5-3b__v1,ebl,cdf7514d4c,heading,not stated,0 mL,False
+llm: qwen2.5-3b__v1,ebl,856f169e61,heading,not stated,0 mL,False
+llm: qwen2.5-3b__v1,ebl,02fe994b4f,detector_only,not stated,350 mL,False
+llm: qwen2.5-3b__v1,ebl,b8f6f7417f,narrative_only,not stated,0 mL,False
+llm: qwen2.5-3b__v1,ebl,4f01c7fdc0,narrative_only,not stated,0 mL,False
+llm: qwen2.5-3b__v1,ebl,738cd33fa5,narrative_only,not stated,0 mL,False
+llm: qwen2.5-3b__v1,ebl,3e4de01569,heading,not stated,1650 mL,False
+llm: qwen2.5-3b__v1,ebl,412a1983f7,no_mention,not stated,0 mL,False
+llm: qwen2.5-3b__v1,ebl,b161dca783,heading,not stated,3.4 mL,False
+llm: qwen2.5-3b__v1,complications,629e48fda4,detector_only,not_stated,none,False
+llm: qwen2.5-3b__v1,complications,e36a6a3811,narrative_only,not_stated,none,False
+llm: qwen2.5-3b__v1,complications,678a0046f3,heading,not_stated,none,False
+llm: qwen2.5-3b__v1,complications,b38ecfc56c,heading,not_stated,none,False
+llm: qwen2.5-3b__v1,complications,f3b547971c,detector_only,not_stated,none,False
+llm: qwen2.5-3b__v1,complications,20c8356df7,heading,not_stated,none,False
+llm: qwen2.5-3b__v1,complications,2c1a4b8e0f,heading,not_stated,none,False
+llm: qwen2.5-3b__v1,complications,f06034f3e3,heading,not_stated,none,False
+llm: qwen2.5-3b__v1,complications,e9fbc30533,narrative_only,not_stated,none,False
+llm: qwen2.5-3b__v1,complications,4af747a9dd,heading,not_stated,none,False
+llm: qwen2.5-3b__v1,complications,33e7d21f85,narrative_only,not_stated,none,False
+llm: qwen2.5-3b__v1,complications,4829295a7e,detector_only,not_stated,none,False
+llm: qwen2.5-3b__v1,complications,68016c6909,heading,any,none,True
+llm: qwen2.5-3b__v1,complications,7ee2457a78,narrative_only,any,none,False
+llm: qwen2.5-3b__v1,complications,019f087af8,narrative_only,not_stated,none,False
+llm: qwen2.5-3b__v1,complications,8235318f0d,heading,not_stated,none,False
+llm: qwen2.5-3b__v1,complications,ec9d06f431,heading,not_stated,none,False
+llm: qwen2.5-3b__v1,complications,c797b75b7b,heading,not_stated,none,False
+llm: qwen2.5-3b__v1,complications,8aab654fe3,narrative_only,not_stated,none,False
+llm: qwen2.5-3b__v1,complications,a0c9880b75,narrative_only,any,none,False
+llm: qwen2.5-3b__v1,complications,a9112a72da,detector_only,not_stated,none,False
+llm: qwen2.5-3b__v1,complications,97ef1c4d9f,narrative_only,not_stated,none,False
+llm: qwen2.5-3b__v1,complications,641a072feb,heading,not_stated,none,False
+llm: qwen2.5-3b__v1,complications,349843fb8a,heading,not_stated,none,False
+llm: qwen2.5-3b__v1,complications,547b051a10,narrative_only,not_stated,none,False
+llm: qwen2.5-3b__v1,complications,d15c714c4f,heading,not_stated,none,False
+llm: qwen2.5-3b__v1,complications,948a29bc6f,narrative_only,not_stated,none,False
+llm: qwen2.5-3b__v1,complications,a6419c88db,detector_only,not_stated,none,False
+llm: qwen2.5-3b__v1,complications,bc3fd808c1,narrative_only,not_stated,none,False
+llm: qwen2.5-3b__v1,complications,3d6babd9b7,heading,not_stated,none,False
+llm: qwen2.5-3b__v1,complications,0cb152a419,heading,not_stated,none,False
+llm: qwen2.5-3b__v1,complications,4d39892d1a,narrative_only,not_stated,none,False
+llm: qwen2.5-3b__v1,complications,a7296ad422,narrative_only,not_stated,none,True
+llm: qwen2.5-3b__v1,complications,06acb8b600,narrative_only,not_stated,none,False
+llm: qwen2.5-3b__v1,complications,797b702f51,narrative_only,not_stated,none,False
+llm: qwen2.5-3b__v1,complications,bb7bdb5cce,narrative_only,not_stated,none,False
+llm: qwen2.5-3b__v1,complications,cf90e64454,heading,not_stated,none,False
+llm: qwen2.5-3b__v1,complications,b70eddbcc6,narrative_only,not_stated,none,False
+llm: qwen2.5-3b__v1,complications,b34d7af809,narrative_only,not_stated,none,False
+llm: qwen2.5-3b__v1,complications,425789d72e,narrative_only,not_stated,none,False
+llm: qwen2.5-3b__v1,complications,bac1e0b0f9,heading,not_stated,none,True
+llm: qwen2.5-3b__v1,complications,cdf7514d4c,heading,not_stated,none,False
+llm: qwen2.5-3b__v1,complications,bea3c1eebb,heading,not_stated,none,False
+llm: qwen2.5-3b__v1,complications,02fe994b4f,detector_only,not_stated,none,False
+llm: qwen2.5-3b__v1,complications,c7c663bb02,no_mention,not_stated,none,False
+llm: qwen2.5-3b__v1,complications,b8f6f7417f,narrative_only,not_stated,none,False
+llm: qwen2.5-3b__v1,complications,738cd33fa5,narrative_only,not_stated,none,False
+llm: qwen2.5-3b__v1,complications,3e4de01569,heading,not_stated,none,False
+llm: qwen2.5-3b__v1,complications,a89f3f62be,heading,any,none,False
+llm: qwen2.5-3b__v2,anesthesia_types,d76259b459,heading,"mac_sedation, local",local,False
+llm: qwen2.5-3b__v2,anesthesia_types,0d2202e796,heading,general,"general, mac_sedation",False
+llm: qwen2.5-3b__v2,anesthesia_types,d7b03ebc18,heading,"mac_sedation, regional_block","general, local",True
+llm: qwen2.5-3b__v2,anesthesia_types,678a0046f3,heading,general,"general, mac_sedation",False
+llm: qwen2.5-3b__v2,anesthesia_types,e4f746cf00,heading,"general, local",general,False
+llm: qwen2.5-3b__v2,anesthesia_types,20c8356df7,heading,"spinal, local, mac_sedation","spinal, local",False
+llm: qwen2.5-3b__v2,anesthesia_types,2c1a4b8e0f,heading,"general, local",general,False
+llm: qwen2.5-3b__v2,anesthesia_types,30b62b25d4,narrative_only,general,(none),False
+llm: qwen2.5-3b__v2,anesthesia_types,e9fbc30533,narrative_only,"mac_sedation, local",mac_sedation,False
+llm: qwen2.5-3b__v2,anesthesia_types,4af747a9dd,heading,"general, local, topical",general,False
+llm: qwen2.5-3b__v2,anesthesia_types,4c6b5c3213,heading,regional_block,local,False
+llm: qwen2.5-3b__v2,anesthesia_types,34ffdadb66,heading,"topical, local",topical,False
+llm: qwen2.5-3b__v2,anesthesia_types,8235318f0d,heading,"general, local",general,False
+llm: qwen2.5-3b__v2,anesthesia_types,4b58ee4e0a,detector_only,(none),general,False
+llm: qwen2.5-3b__v2,anesthesia_types,b87cfeccc4,heading,"general, local",general,False
+llm: qwen2.5-3b__v2,anesthesia_types,1cb492b93e,heading,"general, local",general,True
+llm: qwen2.5-3b__v2,anesthesia_types,6717d462ae,heading,"mac_sedation, local","general, local",True
+llm: qwen2.5-3b__v2,anesthesia_types,6f631400be,heading,"regional_block, local","mac_sedation, local",False
+llm: qwen2.5-3b__v2,anesthesia_types,a9112a72da,detector_only,local,(none),False
+llm: qwen2.5-3b__v2,anesthesia_types,547b051a10,narrative_only,"mac_sedation, regional_block",mac_sedation,False
+llm: qwen2.5-3b__v2,anesthesia_types,d15c714c4f,heading,general,mac_sedation,False
+llm: qwen2.5-3b__v2,anesthesia_types,948a29bc6f,narrative_only,"general, local",general,False
+llm: qwen2.5-3b__v2,anesthesia_types,3d6babd9b7,heading,"general, local",general,False
+llm: qwen2.5-3b__v2,anesthesia_types,4ceaed933c,heading,"general, regional_block","mac_sedation, spinal",False
+llm: qwen2.5-3b__v2,anesthesia_types,797b702f51,narrative_only,"general, local",general,False
+llm: qwen2.5-3b__v2,anesthesia_types,b70eddbcc6,narrative_only,"general, local, regional_block",general,False
+llm: qwen2.5-3b__v2,anesthesia_types,777ce734eb,heading,"topical, mac_sedation, local",mac_sedation,False
+llm: qwen2.5-3b__v2,anesthesia_types,425789d72e,narrative_only,"general, local",general,False
+llm: qwen2.5-3b__v2,anesthesia_types,bac1e0b0f9,heading,general,"general, mac_sedation",True
+llm: qwen2.5-3b__v2,anesthesia_types,fd35ddc951,heading,general,"general, mac_sedation",True
+llm: qwen2.5-3b__v2,anesthesia_types,bea3c1eebb,heading,"local, mac_sedation",mac_sedation,False
+llm: qwen2.5-3b__v2,anesthesia_types,856f169e61,heading,"local, mac_sedation",local,False
+llm: qwen2.5-3b__v2,anesthesia_types,c7c663bb02,no_mention,local,(none),False
+llm: qwen2.5-3b__v2,anesthesia_types,b69e87186b,detector_only,local,(none),False
+llm: qwen2.5-3b__v2,anesthesia_types,ce6822f85f,detector_only,"general, regional_block, local","general, mac_sedation",False
+llm: qwen2.5-3b__v2,anesthesia_types,ae91a7167d,heading,"mac_sedation, topical, local",mac_sedation,False
+llm: qwen2.5-3b__v2,anesthesia_types,4f01c7fdc0,narrative_only,"mac_sedation, local, general",general,False
+llm: qwen2.5-3b__v2,anesthesia_types,412a1983f7,no_mention,"mac_sedation, topical",general,False
+llm: qwen2.5-3b__v2,anesthesia_types,b161dca783,heading,"general, local","general, mac_sedation",False
+llm: qwen2.5-3b__v2,airway,f06034f3e3,heading,endotracheal_tube,not_stated,False
+llm: qwen2.5-3b__v2,airway,6f631400be,heading,not_stated,lma,False
+llm: qwen2.5-3b__v2,airway,c637e2a9f2,heading,endotracheal_tube,not_stated,False
+llm: qwen2.5-3b__v2,airway,97ef1c4d9f,narrative_only,not_stated,mask,False
+llm: qwen2.5-3b__v2,airway,641a072feb,heading,endotracheal_tube,not_stated,False
+llm: qwen2.5-3b__v2,airway,349843fb8a,heading,endotracheal_tube,not_stated,False
+llm: qwen2.5-3b__v2,airway,4ceaed933c,heading,endotracheal_tube,not_stated,False
+llm: qwen2.5-3b__v2,airway,412a1983f7,no_mention,not_stated,mask,False
+llm: qwen2.5-3b__v2,ebl,678a0046f3,heading,minimal,3 mL,False
+llm: qwen2.5-3b__v2,ebl,97e4f78ca4,heading,not stated,30 mL,False
+llm: qwen2.5-3b__v2,ebl,f8137f024b,heading,minimal,50 mL,False
+llm: qwen2.5-3b__v2,ebl,4b58ee4e0a,detector_only,not stated,0 mL,False
+llm: qwen2.5-3b__v2,ebl,b87cfeccc4,heading,not stated,0 mL,False
+llm: qwen2.5-3b__v2,ebl,1cb492b93e,heading,4 mL,2 mL,True
+llm: qwen2.5-3b__v2,ebl,6717d462ae,heading,not stated,10 mL,True
+llm: qwen2.5-3b__v2,ebl,9e719e6930,heading,0 mL,not stated,False
+llm: qwen2.5-3b__v2,ebl,a7296ad422,narrative_only,0 mL,not stated,True
+llm: qwen2.5-3b__v2,ebl,777ce734eb,heading,0 mL,not stated,False
+llm: qwen2.5-3b__v2,ebl,35327e8ca3,heading,minimal,20 mL,False
+llm: qwen2.5-3b__v2,ebl,fd35ddc951,heading,minimal,not stated,True
+llm: qwen2.5-3b__v2,ebl,3e4de01569,heading,not stated,1650 mL,False
+llm: qwen2.5-3b__v2,complications,d76259b459,heading,none,not_stated,False
+llm: qwen2.5-3b__v2,complications,d7b03ebc18,heading,none,not_stated,True
+llm: qwen2.5-3b__v2,complications,678a0046f3,heading,not_stated,none,False
+llm: qwen2.5-3b__v2,complications,20c8356df7,heading,not_stated,none,False
+llm: qwen2.5-3b__v2,complications,c7e72733fa,narrative_only,none,not_stated,False
+llm: qwen2.5-3b__v2,complications,30b62b25d4,narrative_only,none,not_stated,False
+llm: qwen2.5-3b__v2,complications,4829295a7e,detector_only,not_stated,none,False
+llm: qwen2.5-3b__v2,complications,68016c6909,heading,any,not_stated,True
+llm: qwen2.5-3b__v2,complications,f8137f024b,heading,none,not_stated,False
+llm: qwen2.5-3b__v2,complications,7ee2457a78,narrative_only,any,not_stated,False
+llm: qwen2.5-3b__v2,complications,a0c9880b75,narrative_only,any,not_stated,False
+llm: qwen2.5-3b__v2,complications,a229a04f9a,heading,none,not_stated,False
+llm: qwen2.5-3b__v2,complications,6717d462ae,heading,none,not_stated,True
+llm: qwen2.5-3b__v2,complications,bac1e0b0f9,heading,not_stated,none,True
+llm: qwen2.5-3b__v2,complications,c7c663bb02,no_mention,not_stated,none,False
+llm: qwen2.5-3b__v2,complications,4f01c7fdc0,narrative_only,none,not_stated,False
+llm: qwen2.5-3b__v2,complications,3e4de01569,heading,not_stated,none,False
+llm: qwen2.5-3b__v2,complications,a89f3f62be,heading,any,none,False
