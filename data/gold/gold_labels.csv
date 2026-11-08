@@ -1,0 +1,6 @@
+note_id,anesthesia_types,airway,ebl_ml,ebl_minimal,complications,unsure,comment,labeled_at
+629e48fda4,general,not_stated,,False,not_stated,False,inhalational counted as general,2026-11-08 15:29
+d76259b459,mac_sedation|local,not_stated,,False,none,False,Heading lists lidocaine only; IV sedation (and p.o. premed) in narrative.,2026-11-08 15:33
+e36a6a3811,general,endotracheal_tube,,False,not_stated,False,"Narrative only; ""without incident"" refers to induction, so complications not_stated",2026-11-08 15:35
+0d2202e796,general,lma,,False,none,False,,2026-11-08 15:38
+d7b03ebc18,mac_sedation|regional_block,not_stated,,False,none,True,Heading says TIVA and local; narrative describes IV sedation + Marcaine ankle block. Labeled from narrative.,2026-11-08 15:42
