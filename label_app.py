@@ -8,6 +8,12 @@ so you can stop at any time and continue later.
 
 The app never shows what the rules or the LLM extracted, so your labels are
 independent of the methods being evaluated ("blind" labeling).
+
+If data/gold/draft_labels.csv exists, unlabeled notes are pre-filled with that
+draft (written by an AI assistant, Claude) and marked clearly. You review the
+note and correct anything you disagree with. Each saved row records where the
+label came from (label_source) and whether you changed the draft
+(changed_from_draft), so the evaluation can report this openly.
 """
 import html
 import re
@@ -20,10 +26,15 @@ import streamlit as st
 
 sys.path.insert(0, str(Path(__file__).parent / "src"))
 from common import (AIRWAY_VALUES, ANESTHESIA_TYPES, COMPLICATION_VALUES,  # noqa: E402
-                    GOLD_LABELS, GOLD_SAMPLE, load_notes)
+                    DRAFT_LABELS, GOLD_LABELS, GOLD_SAMPLE, load_notes)
 
 COLUMNS = ["note_id", "anesthesia_types", "airway", "ebl_ml", "ebl_minimal",
-           "complications", "unsure", "comment", "labeled_at"]
+           "complications", "unsure", "comment", "labeled_at", "label_source",
+           "changed_from_draft"]
+# label_source values
+HUMAN_GUIDED = "human_with_ai_guidance"   # labeled by the author while discussing notes with Claude
+DRAFT_REVIEWED = "ai_draft_human_reviewed"  # pre-filled by Claude, checked and corrected by the author
+FIELDS = ["anesthesia_types", "airway", "ebl_ml", "ebl_minimal", "complications"]
 HIGHLIGHT = re.compile(
     r"(anesthe\w*|sedation|sedated|\bMAC\b|\bLMA\b|laryngeal mask|intubat\w*|endotracheal|"
     r"nasotracheal|spinal|epidural|caudal|\bblock\b|lidocaine|marcaine|bupivacaine|local|"
@@ -44,9 +55,29 @@ def load():
 
 def read_labels() -> pd.DataFrame:
     if GOLD_LABELS.exists():
-        return pd.read_csv(GOLD_LABELS, dtype={"anesthesia_types": str, "comment": str},
-                           keep_default_na=False)
+        labels = pd.read_csv(GOLD_LABELS, dtype=str, keep_default_na=False)
+        # rows saved before drafts existed were labeled by the author with Claude's guidance
+        if "label_source" not in labels:
+            labels["label_source"] = HUMAN_GUIDED
+        labels["label_source"] = labels["label_source"].replace("", HUMAN_GUIDED)
+        if "changed_from_draft" not in labels:
+            labels["changed_from_draft"] = ""
+        return labels
     return pd.DataFrame(columns=COLUMNS)
+
+
+def read_drafts() -> pd.DataFrame:
+    if DRAFT_LABELS.exists():
+        return pd.read_csv(DRAFT_LABELS, dtype=str, keep_default_na=False).set_index("note_id")
+    return pd.DataFrame()
+
+
+def normalize(row) -> tuple:
+    """Comparable form of a label, to tell whether the reviewer changed the draft."""
+    types = tuple(sorted(t for t in str(row["anesthesia_types"]).split("|") if t))
+    ebl = str(row["ebl_ml"]).strip()
+    ebl = "" if ebl in ("", "nan") else f"{float(ebl):g}"
+    return (types, row["airway"], ebl, str(row["ebl_minimal"]) == "True", row["complications"])
 
 
 def save_label(row: dict) -> None:
@@ -65,6 +96,7 @@ def highlighted(text: str) -> str:
 
 sample, notes = load()
 labels = read_labels()
+drafts = read_drafts()
 done = set(labels["note_id"])
 ids = sample["note_id"].tolist()
 
@@ -101,7 +133,18 @@ with left:
 
 prev = labels[labels["note_id"] == nid]
 p = prev.iloc[0] if len(prev) else None
+draft = drafts.loc[nid] if nid in drafts.index else None
+from_draft = p is None and draft is not None
+if from_draft:
+    p = draft  # pre-fill the form with the draft
 with right:
+    if from_draft:
+        st.info("**Claude draft, not yet reviewed.** Check every field against the note and "
+                "change anything you disagree with before saving.  \n"
+                f"Draft reasoning: {draft.get('draft_reasoning', '')}")
+    elif p is not None and p.get("label_source") == DRAFT_REVIEWED:
+        st.caption("Reviewed Claude draft"
+                   + (" (you changed it)" if str(p.get("changed_from_draft")) == "True" else ""))
     with st.form(f"form_{nid}"):
         types = st.multiselect(
             "Anesthesia type (all that apply)", ANESTHESIA_TYPES,
@@ -120,7 +163,8 @@ with right:
                         else COMPLICATION_VALUES.index("not_stated"))
         unsure = st.checkbox("Unsure about this note",
                              value=p is not None and str(p["unsure"]) == "True")
-        comment = st.text_input("Comment (optional)", value=p["comment"] if p is not None else "")
+        comment = st.text_input("Comment (optional)",
+                                value="" if from_draft or p is None else p["comment"])
         submitted = st.form_submit_button("Save and go to next", type="primary")
 
     if submitted:
@@ -130,10 +174,17 @@ with right:
         except ValueError:
             st.error("Blood loss must be a number in mL (or empty).")
             st.stop()
-        save_label({"note_id": nid, "anesthesia_types": "|".join(types), "airway": airway,
-                    "ebl_ml": ebl_val, "ebl_minimal": minimal, "complications": comp,
-                    "unsure": unsure, "comment": comment,
-                    "labeled_at": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M")})
+        row = {"note_id": nid, "anesthesia_types": "|".join(types), "airway": airway,
+               "ebl_ml": ebl_val, "ebl_minimal": minimal, "complications": comp,
+               "unsure": unsure, "comment": comment,
+               "labeled_at": datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M")}
+        if draft is not None and (from_draft or (len(prev) and prev.iloc[0]["label_source"] == DRAFT_REVIEWED)):
+            row["label_source"] = DRAFT_REVIEWED
+            row["changed_from_draft"] = normalize(row) != normalize(draft)
+        else:
+            row["label_source"] = prev.iloc[0]["label_source"] if len(prev) else HUMAN_GUIDED
+            row["changed_from_draft"] = ""
+        save_label(row)
         if pos < len(ids) - 1:
             st.session_state.pos = pos + 1
         st.rerun()

@@ -18,6 +18,7 @@ PROMPTS = ROOT / "prompts"
 
 GOLD_SAMPLE = GOLD / "gold_sample.csv"
 GOLD_LABELS = GOLD / "gold_labels.csv"
+DRAFT_LABELS = GOLD / "draft_labels.csv"  # AI-drafted labels, reviewed in the labeling app
 RULES_OUT = OUTPUTS / "rules.jsonl"
 RUNS_LOG = OUTPUTS / "runs.csv"
 

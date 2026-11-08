@@ -1,0 +1,63 @@
+note_id,anesthesia_types,airway,ebl_ml,ebl_minimal,complications,unsure,draft_reasoning
+a229a04f9a,local,not_stated,,False,none,False,"Heading ""Local""; ""under local infiltration"". ""No intraoperative complications were encountered."""
+1cb492b93e,general|local,endotracheal_tube,4,False,none,True,"General ETT (heading, ""extubated""). Local = Marcaine injected at peritonsillar areas. EBL given in two parts, ""less than 2 mL"" each, so 2+2 = 4 (check you agree with summing). Complications: none."
+f7e9c52e7f,local,not_stated,30,False,none,False,"Heading ""Local"" (6 mL lidocaine infiltrated; mL = anesthetic volume, not EBL). EBL ""less than 30 mL"" -> 30. Complications: None."
+6717d462ae,mac_sedation|local,not_stated,,False,none,True,"Heading says ""TIVA/local"" but narrative describes IV sedation + Marcaine ""infiltrative type block"" (local infiltration, not a nerve block). Labeled from narrative. ""Without complications""."
+6f631400be,regional_block|local,not_stated,,False,none,False,Bier block = regional_block. Wound also infiltrated with Marcaine before closure -> local. Complications: None.
+5fa5afe794,,not_stated,,False,not_stated,False,"CT neck report, no procedure. ""Infiltrative mass"" describes a tumor, not anesthesia."
+4c7a66da59,general,not_stated,50,False,none,False,"General (heading); airway not mentioned. EBL ""less than 50 cc"" -> 50. Complications: None."
+c343ffabbb,general,not_stated,150,False,none,False,General (heading); airway not mentioned. EBL 150 mL. Complications: None.
+a9112a72da,local,not_stated,,False,not_stated,False,"Only lidocaine infiltrated at the skin (""adequate anesthesia"" refers to it). No sedation described. Complications not stated (""tolerated well"" only)."
+c637e2a9f2,mac_sedation,endotracheal_tube,,False,none,False,"Heading ""Moderate bedside sedation"" (fentanyl, Versed). ICU patient already on an ET tube; bronchoscope passed through it -> endotracheal_tube. Paralytics are not an anesthesia type. Complications: None."
+97ef1c4d9f,mac_sedation,not_stated,,False,not_stated,False,"Conscious sedation with propofol in the ED. No airway, EBL or complications stated."
+641a072feb,general,endotracheal_tube,,False,not_stated,False,"General (heading); ""extubated"" -> ETT. EBL ""Per Anesthesia"" gives no amount -> empty. 1 unit PRBC given is a transfusion, not EBL. No complications statement."
+670472a626,general,not_stated,,False,none,False,General (heading). No airway or EBL stated. Complications: None.
+de589a41c3,general,endotracheal_tube,400,False,none,False,General endotracheal (heading). EBL 400 mL; fluids are not EBL. Complications: None.
+3430121928,general,endotracheal_tube,,False,none,False,"""General endotracheal anesthesia"" in narrative. Necrotic muscle is a diagnosis, not a complication. Complications: None."
+4ec61ab81d,local|mac_sedation,not_stated,,False,none,False,"Heading ""Local with IV sedation"". Cement/dye volumes are not EBL. Small dye spread into disk space is a finding; note says no complications."
+349843fb8a,general|spinal,endotracheal_tube,100,False,not_stated,False,"Heading ""General and spinal with Astramorph for postoperative pain""; narrative describes both. ""Extubated"" -> ETT. EBL ""less than 100 cc"" -> 100; fluids/urine are not EBL. Change of plan to abdominal approach is not a complication; no complications statement."
+547b051a10,mac_sedation|regional_block,not_stated,,False,not_stated,False,"Sedation under monitored anesthesia care + peribulbar/retrobulbar block (Xylocaine/bupivacaine are the block itself, so not ""local"" separately). Listed risks are consent. No EBL or complications stated."
+d15c714c4f,general,lma,,False,not_stated,False,"""General laryngeal mask"" -> general + LMA (""extubated"" here means the LMA was removed). ""No bleeding at the conclusion"" is not an EBL statement. No complications statement."
+948a29bc6f,general|local,endotracheal_tube,,False,not_stated,False,General endotracheal (narrative). Marcaine infiltrated into port sites -> local. No EBL or complications stated.
+a89f3f62be,general,endotracheal_tube,250,False,none,False,"General endotracheal (heading; intubation/extubation). EBL ""less than 250 cc"" -> 250; fluids/urine are not EBL. Epidural bleeding that was coagulated is routine; Complications: None. ""Epidural space"" refers to anatomy, not anesthesia."
+a6419c88db,general,not_stated,,False,not_stated,False,"General (heading with comma). Nothing on airway, EBL or complications."
+bc3fd808c1,general,not_stated,500,False,not_stated,False,"General anesthesia induced (narrative). EBL 500 mL. ""Without incident"" refers to induction only, so complications not stated."
+9f32862d3e,,not_stated,,False,not_stated,False,"Oncology consult, no procedure. ""Tolerated the procedure well"" refers to past surgery; heparin injections are medication."
+3d6babd9b7,general|local,not_stated,,False,not_stated,False,"General anesthesia; bupivacaine infiltrated before skin closure -> local. No airway, EBL or complications stated."
+9e719e6930,general,mask,0,False,none,False,"General; ""Mask airway was used"" -> mask. EBL ""None"" -> 0. Complications: None."
+0cb152a419,general,endotracheal_tube,300,False,not_stated,False,General endotracheal. EBL 300 mL. No complications statement in the note.
+4d39892d1a,spinal,not_stated,600,False,not_stated,False,"Discharge summary; spinal anesthesia. EBL 600 mL. ""Recovered uneventfully"" is not an explicit no-complications statement; uncomplicated pregnancy is not about the procedure."
+4ceaed933c,general|regional_block,endotracheal_tube,30,False,none,False,"General + interscalene block. ""Extubated"" -> ETT. EBL 30 mL. Complications: None."
+a7296ad422,general,not_stated,0,False,not_stated,True,"General anesthetic for dental work. Throat pack suggests intubation but the airway is not named -> not_stated (unsure). ""No blood loss"" -> 0. Topical fluoride is a dental treatment, not anesthesia."
+06acb8b600,general,endotracheal_tube,,False,not_stated,False,"""General endotracheal anesthesia"". No EBL or complications stated."
+dd37dda7f5,,not_stated,,False,not_stated,False,"EMG/nerve conduction study, no anesthesia."
+797b702f51,general|local,endotracheal_tube,,False,not_stated,False,"General endotracheal. Marcaine injected around the wound for pain control -> local. ""Without incident"" refers to steps, not an outcome statement. No EBL stated."
+673069da58,general,endotracheal_tube,200,False,none,False,"General endotracheal (heading). EBL 200 mL; the 1 L in the abdomen is a finding (ruptured ectopic), not surgical blood loss. Complications: None."
+bb7bdb5cce,general,endotracheal_tube,,False,not_stated,False,"General endotracheal. ""Tolerated well"" -> not_stated. No EBL stated."
+cf90e64454,general,endotracheal_tube,,True,not_stated,False,"General endotracheal (heading). EBL ""Minimal"". Risk list is consent, not complications."
+509ed9f1c9,,not_stated,,False,none,True,"Discharge summary; anesthesia type never named -> empty (unsure). ""COMPLICATIONS: None"" is explicit, though the narrative says ""low intraoperative complication"" (likely dictation error) -> none, unsure."
+b70eddbcc6,general|local|regional_block,endotracheal_tube,60,False,not_stated,False,General with oral endotracheal intubation. Lidocaine at the incision -> local; inferior alveolar nerve block -> regional_block. EBL 60 mL; fluids are not EBL. No complications statement.
+b34d7af809,general,endotracheal_tube,,False,not_stated,False,General endotracheal. No EBL or complications stated.
+777ce734eb,topical|mac_sedation|local,not_stated,0,False,none,False,"Heading ""Topical with MAC"". Intracameral Xylocaine -> local. EBL ""None"" -> 0. Complications: None."
+3f753a8be4,,not_stated,,False,not_stated,False,"Sleep clinic follow-up, no procedure. Sedation here is from her daily medications, not anesthesia."
+85a656850f,epidural|general,endotracheal_tube,450,False,none,False,"Epidural and general endotracheal anesthesia (narrative). EBL 450 mL; Cell Saver/crystalloid are replacement, not EBL. Complications: None; consent list and controlled bleeding are not complications."
+425789d72e,general|local,not_stated,,False,not_stated,False,"General anesthesia (narrative). Marcaine injected into the puncture sites -> local. No airway, EBL or complications stated."
+05223d8563,mac_sedation|local,not_stated,,False,none,False,"IV sedation + lidocaine skin infiltration -> local. The lidocaine/Celestone mixture in the joint is the treatment injection, not anesthesia. ""No complications were noted""."
+35327e8ca3,local|mac_sedation,not_stated,,True,none,False,"Heading ""Local with sedation"". EBL ""Minimal"". Complications: None."
+bac1e0b0f9,general,not_stated,200,False,not_stated,True,"Heading ""General and nonendotracheal"" -> no tube, but the device (mask/LMA) is not named -> not_stated (unsure). EBL ""less than 200 cc"" -> 200. No complications statement."
+cdf7514d4c,general,not_stated,,False,not_stated,False,"General (heading). No airway, EBL or complications stated."
+fd35ddc951,general,lma,,True,none,True,"""General LMA"". ""Extubated"" means LMA removed. EBL ""Minimum"" -> minimal. ""Recurrent complications: None"" reads like a dictation error for complications -> none (unsure)."
+bea3c1eebb,local|mac_sedation,not_stated,0,False,not_stated,False,"Heading ""Local plus IV sedation (MAC)"". Kenalog/Xylocaine injections into the fingers and palm are treatments, not anesthesia. EBL ""Zero"" -> 0. No complications statement."
+e2c3f02520,general,endotracheal_tube,50,False,none,False,"General endotracheal. EBL ""less than 50 mL"" -> 50. Complications: None; past epidural steroid injections are history, not anesthesia."
+856f169e61,local|mac_sedation,not_stated,,False,none,False,"Heading ""Local sedation"": Xylocaine skin wheal + sedation. The sympathetic block itself is the treatment (pain procedure), so not labeled regional_block. Complications: None."
+02fe994b4f,general,endotracheal_tube,,False,not_stated,False,"General endotracheal. The ""tumescent anesthesia"" is lactated Ringer's with epinephrine, no anesthetic drug -> not local. No EBL or complications stated."
+c7c663bb02,local,not_stated,500,False,not_stated,False,"Delivery note. Lidocaine infiltrated for laceration repair -> local. EBL about 500 mL. Laceration is a birth injury, not a procedure complication; no complications statement."
+b8f6f7417f,general,not_stated,,False,not_stated,False,"General anesthesia (narrative). No airway, EBL or complications stated."
+b69e87186b,local,not_stated,,True,none,False,"""Area around the lesion was anesthetized"" (drug not named) -> local. EBL ""Minimal""; fluids are not EBL. Complications: None."
+ce6822f85f,general|regional_block|local,endotracheal_tube,20,False,none,False,GETA with orotracheal ET tube. Inferior alveolar block -> regional_block; separate local infiltration -> local. EBL 20 mL. Complications: None.
+ae91a7167d,mac_sedation|topical|local,not_stated,0,False,none,False,"Monitored anesthesia care (heading). Lidocaine drops -> topical; intracameral lidocaine -> local. EBL ""None"" -> 0. Complications: None."
+4f01c7fdc0,mac_sedation|local|general,endotracheal_tube,,False,none,False,"""Sedation and local Xylocaine"", then general endotracheal anesthesia -> all three. ""Topical pressure"" is hemostasis, not anesthesia. ""There were no complications""."
+738cd33fa5,general,endotracheal_tube,,False,not_stated,False,General endotracheal. No EBL or complications stated.
+3e4de01569,general,endotracheal_tube,,False,not_stated,False,"Heading ""General""; narrative says general endotracheal -> ETT. Lactated Ringer's infiltration is fluid, not anesthesia or EBL. No EBL or complications stated."
+412a1983f7,mac_sedation|topical,not_stated,,False,none,False,"Sedated with Versed + Demerol -> mac_sedation; Hurricane spray to oropharynx -> topical. A bite block is not an airway device. ""No complications""."
+b161dca783,general|local,endotracheal_tube,,False,none,False,"General, oral endotracheal. Lidocaine/Marcaine ""local anesthetic"" in the quadrant -> local. No EBL stated. Complications: None."

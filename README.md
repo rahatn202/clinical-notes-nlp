@@ -1,6 +1,6 @@
 # Clinical Notes NLP: Anesthesia Information Extraction
 
-Extracting structured anesthesia information from free-text operative notes, and measuring, honestly, how well a rule-based extractor and a local large language model (LLM) do against a hand-labeled gold standard.
+Extracting structured anesthesia information from free-text operative notes, and measuring, honestly, how well a rule-based extractor and a local large language model (LLM) do against a human-reviewed gold standard.
 
 | Field extracted | Example values |
 |---|---|
@@ -20,7 +20,7 @@ MTSamples CSV
   │ 2b anesthesia_detector.py  TF-IDF + logistic regression: which notes involve anesthesia?
   │ 3a extract_rules.py        rule-based extractor (baseline)
   │ 3b extract_llm.py          local LLM with a JSON schema (Ollama)
-  │ 4  sample_gold.py + label_app.py   100 notes labeled by hand
+  │ 4  sample_gold.py + label_app.py   100 notes labeled or reviewed by hand
   │ 5  evaluate.py + app.py    accuracy with confidence intervals, error review, run monitoring
 ```
 
@@ -65,7 +65,9 @@ pip install -r requirements.txt
 ```bash
 streamlit run label_app.py
 ```
-Each save goes straight to `data/gold/gold_labels.csv`, so you can stop and continue later. The app never shows the methods' answers, so the labels stay independent ("blind").
+Each save goes straight to `data/gold/gold_labels.csv`, so you can stop and continue later. The app never shows the rule or LLM answers, so the labels stay independent of the methods being tested ("blind").
+
+If `data/gold/draft_labels.csv` exists, the app fills the form with that draft and shows its reasoning. Nothing counts as a gold label until it is reviewed and saved. Each saved row records where it came from (`label_source`) and whether the reviewer changed the draft (`changed_from_draft`).
 
 **Step 3b: run the LLM.** Pick a model that fits your computer's memory:
 
@@ -113,6 +115,7 @@ data/raw/, data/processed/  not committed; rebuild with the scripts
 - **One schema for everything.** `src/common.py` defines the fields and allowed values. The LLM gets it as a JSON schema (Ollama structured outputs), and every answer is validated again; problems are recorded, not hidden.
 - **Same rules for the human and the model.** The labeling guide and the LLM prompt describe each field the same way.
 - **Gold sample built to find weaknesses.** It mixes notes with a heading (55), narrative-only notes (25), notes found only by the detector (10) and notes with no mention (10), and results are reported for each group.
+- **Label sources are recorded.** Every gold row says whether it was labeled by the author (with AI help on hard cases) or drafted by an AI assistant and then reviewed and corrected by the author. The evaluation report counts both groups and how often drafts were changed.
 - **Uncertainty is shown.** Accuracy comes with 95% bootstrap confidence intervals.
 - **Repeatable runs.** Temperature 0, fixed seed, fixed random samples.
 
@@ -125,7 +128,8 @@ data/raw/, data/processed/  not committed; rebuild with the scripts
 
 ## Limitations
 
-- The gold standard is labeled by one person without clinical training; there is no second labeler to measure agreement.
+- The gold standard comes from one person without clinical training; there is no second labeler to measure agreement.
+- **AI assistance in the gold standard.** The first 38 notes were labeled by the author, who asked an AI assistant (Claude) about hard cases. The other 62 were drafted by Claude, using the same labeling guide and the conventions set on the first 38, and then reviewed note by note by the author in the labeling app. Claude is a different model from the one being evaluated, but reviewers tend to accept drafts, and AI drafts may share mistakes with AI extractors. So scores on the reviewed drafts may be somewhat too favorable to the LLM. The report gives the number of drafts the author changed.
 - 100 gold notes is a small sample; the confidence intervals show the uncertainty.
 - MTSamples notes are transcription examples, not records from a real hospital, and their style may differ from real operative notes.
 

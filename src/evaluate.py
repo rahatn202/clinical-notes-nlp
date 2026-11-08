@@ -48,7 +48,32 @@ def load_gold() -> pd.DataFrame:
         "ebl_minimal": str(r["ebl_minimal"]) == "True",
         "complications": r["complications"]}, axis=1)
     g["unsure"] = g["unsure"].astype(str) == "True"
+    if "label_source" not in g:
+        g["label_source"] = "human_with_ai_guidance"
+    g["label_source"] = g["label_source"].replace("", "human_with_ai_guidance")
+    if "changed_from_draft" not in g:
+        g["changed_from_draft"] = ""
     return g
+
+
+def provenance_lines(gold: pd.DataFrame) -> list[str]:
+    """Describe how the gold labels were produced, with counts."""
+    n = len(gold)
+    guided = int((gold["label_source"] == "human_with_ai_guidance").sum())
+    drafted = gold[gold["label_source"] == "ai_draft_human_reviewed"]
+    changed = int((drafted["changed_from_draft"].astype(str) == "True").sum())
+    lines = ["## How the gold standard was made", "",
+             "| Label source | Notes |", "|---|---:|",
+             f"| Labeled by the author, discussing notes with an AI assistant (Claude) | {guided} |",
+             f"| Drafted by Claude, reviewed and corrected by the author | {len(drafted)} |",
+             f"| Total | {n} |", ""]
+    if len(drafted):
+        lines += [f"The author changed **{changed} of {len(drafted)}** Claude drafts "
+                  f"({changed / len(drafted):.0%}) during review.", ""]
+    lines += ["Because Claude helped produce the labels, these results measure agreement with "
+              "an AI-assisted, human-reviewed reference, not with independent expert annotation. "
+              "A second, independent human labeler would make the reference stronger.", ""]
+    return lines
 
 
 def load_methods() -> dict[str, dict]:
@@ -161,6 +186,7 @@ def write_report(gold, metrics, errors, methods) -> None:
              f"Gold standard: **{len(gold)} hand-labeled notes** "
              f"({int(gold['unsure'].sum())} marked unsure). "
              "Labels follow [docs/labeling_guide.md](../docs/labeling_guide.md).", "",
+             *provenance_lines(gold),
              "## Accuracy by field (95% bootstrap confidence interval)", "",
              "| Field | " + " | ".join(names) + " |", "|---|" + "---:|" * len(names)]
     for field in FIELDS:
@@ -202,8 +228,9 @@ def write_report(gold, metrics, errors, methods) -> None:
     lines += ["", f"Every disagreement is listed in `reports/errors.csv` "
               f"({len(errors)} rows) and can be browsed in the dashboard.", "",
               "## Limitations", "",
-              "- One person labeled the gold standard, without clinical training, and there is "
-              "no second labeler to measure agreement.",
+              "- One person labeled the gold standard, without clinical training, with help from "
+              "an AI assistant (see above). There is no second, independent labeler to measure "
+              "agreement.",
               f"- {len(gold)} notes is a small sample; the confidence intervals show how uncertain "
               "each number is.",
               "- MTSamples notes are transcription examples, not records from a real hospital.", ""]
@@ -220,7 +247,8 @@ def main() -> None:
     write_report(gold, metrics, errors, methods)
     acc = metrics[(metrics["metric"] == "accuracy") & (metrics["group"] == "all")]
     print(acc.pivot(index="field", columns="method", values="value").round(2).to_string())
-    print(f"{len(gold)} gold notes, {len(errors)} disagreements -> reports/evaluation.md")
+    print(f"{len(gold)} gold notes ({gold['label_source'].value_counts().to_dict()}), "
+          f"{len(errors)} disagreements -> reports/evaluation.md")
 
 
 if __name__ == "__main__":
