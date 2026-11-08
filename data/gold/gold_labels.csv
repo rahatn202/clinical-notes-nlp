@@ -4,3 +4,36 @@ d76259b459,mac_sedation|local,not_stated,,False,none,False,Heading lists lidocai
 e36a6a3811,general,endotracheal_tube,,False,not_stated,False,"Narrative only; ""without incident"" refers to induction, so complications not_stated",2026-11-08 15:35
 0d2202e796,general,lma,,False,none,False,,2026-11-08 15:38
 d7b03ebc18,mac_sedation|regional_block,not_stated,,False,none,True,Heading says TIVA and local; narrative describes IV sedation + Marcaine ankle block. Labeled from narrative.,2026-11-08 15:42
+678a0046f3,general,endotracheal_tube,,True,not_stated,False,ouble-lumen ETT -> endotracheal_tube. FLUIDS line is not EBL.,2026-11-08 19:37
+b38ecfc56c,general,endotracheal_tube,,False,not_stated,False,,2026-11-08 19:41
+f3b547971c,general,not_stated,,False,not_stated,False,general inhalation anesthetic,2026-11-08 19:42
+6fc26b02e9,general|epidural,not_stated,200.0,False,none,False,"Conversion to open was for safety, no injury; heading says Complications: None.",2026-11-08 19:45
+e4f746cf00,general|local,endotracheal_tube,,False,none,False,"Local = Marcaine infiltrated at scalp incision (narrative only). ""No significant bleeding"" is not EBL.",2026-11-08 19:47
+97e4f78ca4,general,endotracheal_tube,,False,none,False,"30 cc drawn from atrial line is deliberate withdrawal, not EBL; EBL not stated.",2026-11-08 19:48
+20c8356df7,spinal|local|mac_sedation,not_stated,,False,not_stated,False,Sedation only in narrative. Abnormal preop chest x-ray is not a procedure complication.,2026-11-08 19:49
+c7e72733fa,general,not_stated,,False,none,False,"Narrative only. 3 L saline lavage is irrigation, not EBL.",2026-11-08 19:50
+2c1a4b8e0f,general|local,endotracheal_tube,,False,not_stated,False,"Local = Marcaine at wound edges for post-op pain. ""Intubation"" -> ETT. History not complications.",2026-11-08 19:52
+17948f36c1,,not_stated,,False,not_stated,False,"EMG report, no procedure anesthesia. Lidoderm patch is a pain prescription, not anesthesia.",2026-11-08 19:52
+f06034f3e3,general,endotracheal_tube,150.0,False,not_stated,False,"Airway from ""extubated"" only. Listed risks are consent discussion, not complications.",2026-11-08 19:54
+30b62b25d4,general,not_stated,,False,none,False,"""Mask"" = staff sterile attire, not airway. Miller blade used for TEE probe, not intubation.",2026-11-08 19:55
+e9fbc30533,mac_sedation|local,not_stated,,False,not_stated,False,,2026-11-08 19:58
+4af747a9dd,general|local|topical,endotracheal_tube,50.0,False,not_stated,False,"Cocaine pledgets = topical; ""localized with lidocaine"" = local. ""Without incident"" refers to transfer only.",2026-11-08 20:00
+6f37ccf81a,epidural,not_stated,1000.0,False,none,False,Cord blood for donation is not EBL.,2026-11-08 20:00
+33e7d21f85,general,not_stated,,False,not_stated,False,"Narrative only. ""No bleeding noted"" is not an EBL statement.",2026-11-08 20:01
+4829295a7e,general,endotracheal_tube,,False,not_stated,False,"General implied by intubation + ""awakened/extubated"" (not stated). Afrin is decongestant, not anesthetic. ""Trivial"" bleeding -> minimal.",2026-11-08 20:03
+68016c6909,general,endotracheal_tube,,False,any,True,Misplaced seed found in urethra and removed -> any (seed migration); not labeled as complication in note.,2026-11-08 20:04
+f8137f024b,local,not_stated,,True,none,False,"Lidocaine cc are anesthetic volumes, not EBL. Failed IJ attempts -> switched approach, not a complication.",2026-11-08 20:05
+7ee2457a78,general,not_stated,,False,any,False,"Lidocaine given for vessel spasm, not anesthesia. Hematoma + transient leg mottling -> any.",2026-11-08 20:06
+91e91f7ac5,general,not_stated,,False,none,False,Template note (XX placeholders). Wound leak fixed with extra suture = repair step. Eye drops not anesthetic.,2026-11-08 20:07
+4c6b5c3213,regional_block,not_stated,,False,not_stated,False,"""Local anesthetic"" = the retrobulbar block itself. Maxitrol ""topically"" is antibiotic/steroid, not anesthesia.",2026-11-08 20:09
+b420026d3a,,not_stated,,False,not_stated,False,"Consult note, no procedure.",2026-11-08 20:11
+34ffdadb66,topical|local,not_stated,,False,none,False,Heading says Topical; intracameral lidocaine in narrative -> local too. TobraDex not anesthetic.,2026-11-08 20:13
+019f087af8,general,endotracheal_tube,,False,not_stated,False,"""Spinal needle"" is a needle type, not spinal anesthesia. Blood aspiration confirms vein access, not EBL.",2026-11-08 20:15
+8235318f0d,general|local,endotracheal_tube,,False,not_stated,False,Local = Marcaine infiltrated at port sites (narrative only).,2026-11-08 20:15
+ec9d06f431,general|epidural,endotracheal_tube,600.0,False,not_stated,False,Epidural catheter placed -> epidural. Fluids/PRBC given are not EBL; bleeding controlled routinely.,2026-11-08 20:16
+4b58ee4e0a,,not_stated,,False,none,False,"""Appropriate anesthesia"" - type not specified, left empty. Joint cocktail contents not stated.",2026-11-08 20:17
+c797b75b7b,general,not_stated,100.0,False,not_stated,False,"EBL ""less than 100 cc"" -> 100. Fluids not EBL. No complications line; ""no injury/bleeding"" findings only.",2026-11-08 20:18
+e2252f0566,,not_stated,,False,not_stated,False,"Psych evaluation, no procedure. Cocaine = substance use history, not anesthesia.",2026-11-08 20:19
+b87cfeccc4,general|local,not_stated,,False,none,False,"Xylocaine = lidocaine -> local. EBL/complications stated at end of narrative, not in headings.",2026-11-08 20:19
+8aab654fe3,general,endotracheal_tube,,False,not_stated,False,"Narrative only. Double-lumen tube -> ETT. Evicel 2 cc is sealant, not EBL.",2026-11-08 20:20
+a0c9880b75,general,not_stated,,False,any,False,"Iatrogenic external iliac dissection from sheath manipulation blocked flow, required stenting -> any.",2026-11-08 20:20
