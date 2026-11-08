@@ -147,10 +147,10 @@ data/raw/, data/processed/  not committed; rebuild with the scripts
 
 ## Related work
 
-- Specialty classification on MTSamples is common, with reported accuracy ranging from below 40% to above 95%. The duplicate problem in the leakage audit may explain part of that spread.
-- [Information Extraction from Clinical Notes: Are We Ready to Switch to Large Language Models?](https://arxiv.org/abs/2411.10020) (2024) uses MTSamples, among other sources, for general clinical entities.
-- Yim et al. (2017), [Annotation of pain and anesthesia events for surgery-related processes and outcomes extraction](https://aclanthology.org/W17-2325/), design an annotation schema for anesthesia events on MTSamples operative notes.
-- LLM extraction from real operative notes has been studied in [thoracic surgery](https://jtd.amegroups.org/article/view/108599/html) and [orthopedics](https://www.medrxiv.org/content/10.1101/2025.08.19.25333995).
+- Specialty classification is the most popular task on MTSamples. A 2026 preprint, [CLiGNet](https://arxiv.org/abs/2603.22752) (Barman and Barman), reports that earlier studies claimed accuracy above 90%, but that this came from oversampling (SMOTE) the data before splitting it. Without that leak, their best model reaches 36% accuracy on 40 specialties. My leakage audit points to a second, separate problem: duplicate notes filed under several specialties.
+- Hu et al. (2024), [Information Extraction from Clinical Notes: Are We Ready to Switch to Large Language Models?](https://arxiv.org/abs/2411.10020), compare LLMs on entity and relation extraction using notes from MTSamples, MIMIC-III, i2b2 and UT Physicians.
+- Yim et al. (2017), [Annotation of pain and anesthesia events for surgery-related processes and outcomes extraction](https://aclanthology.org/W17-2325/) (BioNLP workshop), propose an annotation schema for pain, pain management and anesthesia events. Their corpus includes MTSamples operative and clinic notes alongside hospital notes.
+- LLMs have been tested on real operative notes in [thoracic surgery](https://jtd.amegroups.org/article/view/108599/html) (Mugu et al., 2025: extracting key elements from 116 Mayo Clinic notes with Gemini, ChatGPT and LLaMA) and [orthopedics](https://www.medrxiv.org/content/10.1101/2025.08.19.25333995) (2025 preprint: classifying hip-preservation procedures from Boston Children's Hospital notes).
 
 ## Limitations
 
