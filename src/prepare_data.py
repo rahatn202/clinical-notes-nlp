@@ -1,0 +1,129 @@
+"""Step 1: clean the MTSamples medical transcription data.
+
+Usage: python src/prepare_data.py [path to mtsamples.csv]
+       (default: data/raw/mtsamples.csv)
+
+What it does
+------------
+1. Drops rows with no note text.
+2. Restores line breaks. The scraped text uses commas where the original
+   notes had line breaks, for example "PROCEDURE:,  Hernia repair.,DESCRIPTION".
+3. Removes duplicate notes. MTSamples files the same note under several
+   specialties (a knee surgery note appears under both "Orthopedic" and
+   "Surgery"), so about half of the rows are copies. Each unique note is kept
+   once, and all of its specialties are kept in a separate table.
+4. Flags truncated notes (fewer than 30 words). Some notes were cut off during
+   scraping and contain only a heading, such as "SUBJECTIVE:".
+5. Flags notes that describe anesthesia, either with an "ANESTHESIA:" heading
+   or only in the narrative text ("...under general endotracheal anesthesia...").
+
+Outputs
+-------
+  data/processed/notes.csv           one row per unique note
+  data/processed/note_specialty.csv  one row per note x specialty
+  reports/data_profile.md            counts from each cleaning step
+"""
+import hashlib
+import re
+import sys
+from pathlib import Path
+
+import pandas as pd
+
+ROOT = Path(__file__).resolve().parents[1]
+RAW = ROOT / "data" / "raw" / "mtsamples.csv"
+OUT = ROOT / "data" / "processed"
+REPORT = ROOT / "reports" / "data_profile.md"
+
+MIN_WORDS = 30  # shorter notes are scraping errors (cut off after the first heading)
+HEADING_ANESTHESIA = re.compile(r"\bANESTHESIA\s*:", re.IGNORECASE)
+NARRATIVE_ANESTHESIA = re.compile(
+    r"under (?:general|spinal|local|epidural|monitored|mac|iv sedation|conscious sedation)"
+    r"|general (?:endotracheal )?anesthesia (?:was|were) (?:induced|administered|given)",
+    re.IGNORECASE)
+
+
+def clean_text(s: str) -> str:
+    """Turn the scraped one-line text back into readable lines."""
+    s = re.sub(r"\s*:\s*,\s*", ": ", s)                        # "HEADING:,  text" -> "HEADING: text"
+    s = re.sub(r"\.,\s*(?=[A-Z]|\d+\.)", ".\n", s)            # ".,Next" or ".,2." -> line break
+    s = re.sub(r",\s*(?=[A-Z][A-Z /&\-]{2,}:)", "\n", s)       # ",HEADING:" -> line break
+    s = re.sub(r"[ \t]+", " ", s)                              # extra spaces
+    return s.strip()
+
+
+def note_id(text: str) -> str:
+    """Short, stable ID from the note text (same text -> same ID every run)."""
+    return hashlib.sha1(text.encode("utf-8")).hexdigest()[:10]
+
+
+def main(raw_path: Path) -> None:
+    df = pd.read_csv(raw_path)
+    steps = [("Rows in the raw file", len(df))]
+
+    df = df.dropna(subset=["transcription"]).copy()
+    steps.append(("Rows with note text", len(df)))
+
+    df["medical_specialty"] = df["medical_specialty"].str.strip()
+    df["text"] = df["transcription"].map(clean_text)
+    df["note_id"] = df["text"].map(note_id)
+
+    # every specialty a note was filed under
+    note_specialty = (df[["note_id", "medical_specialty"]]
+                      .drop_duplicates()
+                      .rename(columns={"medical_specialty": "specialty"})
+                      .sort_values(["note_id", "specialty"]))
+
+    # one row per unique note (first occurrence keeps its title and description)
+    notes = df.drop_duplicates("note_id")[["note_id", "sample_name", "description", "text"]].copy()
+    notes["sample_name"] = notes["sample_name"].str.strip()
+    notes["description"] = notes["description"].str.strip()
+    notes["n_specialties"] = notes["note_id"].map(note_specialty.groupby("note_id").size())
+    notes["word_count"] = notes["text"].str.split().str.len()
+    notes["is_truncated"] = notes["word_count"] < MIN_WORDS
+    notes["has_anesthesia_heading"] = notes["text"].str.contains(HEADING_ANESTHESIA)
+    notes["has_anesthesia_narrative"] = notes["text"].str.contains(NARRATIVE_ANESTHESIA)
+    notes["mentions_anesthesia"] = notes["has_anesthesia_heading"] | notes["has_anesthesia_narrative"]
+    steps.append(("Unique notes (duplicates removed)", len(notes)))
+    steps.append((f"Usable notes (at least {MIN_WORDS} words)", int((~notes["is_truncated"]).sum())))
+
+    OUT.mkdir(parents=True, exist_ok=True)
+    notes.to_csv(OUT / "notes.csv", index=False)
+    note_specialty.to_csv(OUT / "note_specialty.csv", index=False)
+    write_report(steps, notes, note_specialty)
+    print(f"{len(notes):,} unique notes, {len(note_specialty):,} note-specialty links "
+          f"-> {OUT.relative_to(ROOT)}")
+
+
+def write_report(steps, notes, note_specialty) -> None:
+    n = len(notes)
+    multi = notes["n_specialties"].gt(1).sum()
+    usable = notes[~notes["is_truncated"]]
+    head = usable["has_anesthesia_heading"].sum()
+    narr_only = (usable["has_anesthesia_narrative"] & ~usable["has_anesthesia_heading"]).sum()
+    top = note_specialty["specialty"].value_counts().head(10)
+
+    lines = ["# Data profile: MTSamples", "",
+             "Generated by `src/prepare_data.py`.", "",
+             "## Cleaning steps", "", "| Step | Count |", "|---|---:|"]
+    lines += [f"| {name} | {count:,} |" for name, count in steps]
+    lines += ["", f"Removed {steps[1][1] - n:,} duplicate rows. "
+              f"Flagged {int(notes['is_truncated'].sum())} notes as truncated (they stop after "
+              "the first heading); later steps skip them. "
+              f"{multi:,} of the {n:,} unique notes ({multi / n:.0%}) are filed under more "
+              "than one specialty, so the specialty label is not one-per-note.", "",
+              "## Notes that describe anesthesia (usable notes)", "", "| Group | Notes |", "|---|---:|",
+              f"| With an \"ANESTHESIA:\" heading | {head:,} |",
+              f"| Only in the narrative text | {narr_only:,} |",
+              f"| Total | {head + narr_only:,} |", "",
+              "## Most common specialties (unique notes)", "", "| Specialty | Notes |", "|---|---:|"]
+    lines += [f"| {s} | {c:,} |" for s, c in top.items()]
+    lines += ["", "## Note length", "",
+              f"Usable notes: median {usable['word_count'].median():.0f} words "
+              f"(range {usable['word_count'].min()} to {usable['word_count'].max():,}).", ""]
+    REPORT.parent.mkdir(parents=True, exist_ok=True)
+    REPORT.write_text("\n".join(lines))
+
+
+if __name__ == "__main__":
+    main(Path(sys.argv[1]) if len(sys.argv) > 1 else RAW)
